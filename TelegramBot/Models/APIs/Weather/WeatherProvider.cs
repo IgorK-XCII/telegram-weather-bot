@@ -10,6 +10,6 @@ namespace TelegramBot.Models.APIs.Weather
     {
         public  ITodayWeatherProvider TodayWeatherProvider { get; set; }
         
-        public async Task<TodayWeather> GiveMeTodayWeather() => await TodayWeatherProvider.GiveMeTodayWeather();
+        public async Task<TodayWeather> GiveMeTodayWeather() => await TodayWeatherProvider?.GiveMeTodayWeather();
     }
 }

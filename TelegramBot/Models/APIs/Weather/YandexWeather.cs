@@ -63,7 +63,6 @@ namespace TelegramBot.Models.APIs.Weather
         public class Root
         {
             public Fact fact { get; set; }
-            public Evening evening { get; set; }
             public List<Forecast> forecasts { get; set; }
         }
     }
