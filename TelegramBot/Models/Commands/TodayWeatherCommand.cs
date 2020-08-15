@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
+﻿using System.Text;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using TelegramBot.Models.APIs.Weather;
@@ -11,7 +7,7 @@ namespace TelegramBot.Models.Commands
 {
     public class TodayWeatherCommand : Command
     {
-        public override string CommandName => "today's weather";
+        public override string CommandName => "today";
 
         public override async void Execute(Message message, TelegramBotClient client)
         {
@@ -19,13 +15,26 @@ namespace TelegramBot.Models.Commands
 
             int messageId = message.MessageId;
 
-            WeatherProvider weatherProvider = new WeatherProvider { TodayWeatherProvider = new YandexWeather() };
-            TodayWeather todayWeather = await weatherProvider.GiveMeTodayWeather();
+            WeatherHandler weatherHandler = new WeatherHandler { WeatherProvider = new YandexWeather() };
+            TodayWeather todayWeather = await weatherHandler.GiveMeTodayWeather();
 
-            string botReply = $"Weather in Moscow. Current temperature: {todayWeather.FactTemp}, condition: {todayWeather.FactCondition}. Nights temperature: {todayWeather.EveningTemp}," +
-                $"condition: {todayWeather.EveningCondition}";
+            StringBuilder botReply = new StringBuilder();
+            if(todayWeather != null)
+            {
+                botReply.AppendLine($"Moscow.{todayWeather.Date}");
+                botReply.AppendLine($"Night - temperature: {todayWeather.NightTemp}, condition: {todayWeather.NightCondition}");
+                botReply.AppendLine($"Morning - temperature: {todayWeather.MorningTemp}, condition: {todayWeather.MorningCondition}");
+                botReply.AppendLine($"Day - temperature: {todayWeather.DayTemp}, condition: {todayWeather.DayCondition}");
+                botReply.AppendLine($"Evening - temperature: {todayWeather.EveningTemp}, condition: {todayWeather.EveningCondition}");
+                botReply.AppendLine($"Now - temperature: {todayWeather.FactTemp}, condition: {todayWeather.FactCondition}");
+            }
+            else
+            {
+                botReply.AppendLine("Servise is unavaliable");
+            }
+            
 
-            await client.SendTextMessageAsync(chatId, botReply, replyToMessageId: messageId);
+            await client.SendTextMessageAsync(chatId, botReply.ToString(), replyToMessageId: messageId);
         }
     }
 }

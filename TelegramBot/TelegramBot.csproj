@@ -135,10 +135,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\APIs\Weather\ITodayWeatherProvider.cs" />
-    <Compile Include="Models\APIs\Weather\TodayWeather.cs" />
-    <Compile Include="Models\APIs\Weather\WeatherProvider.cs" />
-    <Compile Include="Models\APIs\Weather\YandexWeather.cs" />
+    <Compile Include="Models\Commands\WeatherOnWeekCommand.cs" />
+    <Compile Include="Models\shared\Request.cs" />
+    <Compile Include="Models\shared\RequestOption.cs" />
+    <Compile Include="Models\Weather\IWeatherProvider.cs" />
+    <Compile Include="Models\Weather\TodayWeather.cs" />
+    <Compile Include="Models\Weather\WeatherHandler.cs" />
+    <Compile Include="Models\Weather\YandexWeather.cs" />
     <Compile Include="Models\AppSettings.cs" />
     <Compile Include="Models\Bot.cs" />
     <Compile Include="Models\Commands\Command.cs" />
@@ -163,6 +166,7 @@
   <ItemGroup>
     <Content Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\TelegramBot20200815160345 - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

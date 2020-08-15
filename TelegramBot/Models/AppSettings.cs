@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
+﻿using System.Configuration;
 
 namespace TelegramBot.Models
 {
     public class AppSettings
     {
-        public static string Url { get; set; } = "https://telegrambot.azurewebsites.net:443/{0}";
+        public static string Url { get; set; } = "https://telegrambot20200815160345.azurewebsites.net:443/{0}";
 
         public static string Name { get; set; } = "CurrentWeather_testBot_Bot";
 
