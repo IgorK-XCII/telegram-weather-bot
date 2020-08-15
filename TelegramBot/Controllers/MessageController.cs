@@ -9,18 +9,25 @@ using TelegramBot.Models.Commands;
 
 namespace TelegramBot.Controllers
 {
+    [Route("api/message/update")]
     public class MessageController : ApiController
     {
-        [Route(@"api/message/update")]
+        [HttpPost]
         public async Task<OkResult> Update([FromBody] Update update)
         {
+            if (update is null) return Ok();
+
             List<Command> commands = Bot.Commands;
             Message message = update.Message;
             TelegramBotClient client = await Bot.GetClient();
 
             foreach(Command command in commands)
             {
-                if (command.Contains(message.Text)) command.Execute(message, client);
+                if (command.Contains(message.Text))
+                {
+                    await command.Execute(message, client);
+                    break;
+                }
             }
 
             return Ok();

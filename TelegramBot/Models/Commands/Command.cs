@@ -1,4 +1,5 @@
-﻿using Telegram.Bot;
+﻿using System.Threading.Tasks;
+using Telegram.Bot;
 using Telegram.Bot.Types;
 
 namespace TelegramBot.Models.Commands
@@ -7,7 +8,7 @@ namespace TelegramBot.Models.Commands
     {
         public abstract string CommandName { get; }
 
-        public abstract void Execute(Message message, TelegramBotClient client);
+        public abstract Task Execute(Message message, TelegramBotClient client);
 
         public bool Contains(string command) => command.Contains(CommandName) && command.Contains(AppSettings.Name);
     }

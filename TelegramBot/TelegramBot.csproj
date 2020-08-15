@@ -166,7 +166,7 @@
   <ItemGroup>
     <Content Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Properties\PublishProfiles\TelegramBot20200815160345 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\TelegramBotWeatherScanner - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
