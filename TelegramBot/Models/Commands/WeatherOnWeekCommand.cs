@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using TelegramBot.Models.APIs.Weather;
@@ -9,7 +10,7 @@ namespace TelegramBot.Models.Commands
     {
         public override string CommandName => "week";
 
-        public override async void Execute(Message message, TelegramBotClient client)
+        public override async Task Execute(Message message, TelegramBotClient client)
         {
             long chatId = message.Chat.Id;
 
