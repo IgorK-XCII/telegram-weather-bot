@@ -16,8 +16,9 @@ namespace TelegramBot.Models.Commands
 
             int messageId = message.MessageId;
 
-            WeatherHandler weatherHandler = new WeatherHandler { WeatherProvider = new YandexWeather() };
-            TodayWeather[] weatherOnWeek = await weatherHandler.GiveMeWeatherOnWeek();
+            if (WeatherHandler.WeatherProvider is null) WeatherHandler.WeatherProvider = new YandexWeather();
+
+            TodayWeather[] weatherOnWeek = await WeatherHandler.GiveMeWeatherOnWeek();
 
             StringBuilder botReply = new StringBuilder();
             if (weatherOnWeek != null)
