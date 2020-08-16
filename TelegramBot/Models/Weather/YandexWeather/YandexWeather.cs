@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Threading.Tasks;
 using TelegramBot.Models.shared;
+using TelegramBot.Models.Weather.YandexWeather.Models;
 
 namespace TelegramBot.Models.APIs.Weather
 {
@@ -16,7 +16,7 @@ namespace TelegramBot.Models.APIs.Weather
         {
             try
             {
-                Weather weather = await Request.Fetch<Weather>(uri, new RequestOption(apiName, apiKey));
+                RootWeather weather = await Request.Fetch<RootWeather>(uri, new RequestOption(apiName, apiKey));
                 Fact fact = weather.fact;
                 Parts fullDay = weather.forecasts[0].parts;
 
@@ -41,7 +41,7 @@ namespace TelegramBot.Models.APIs.Weather
         {
             try
             {
-                Weather weather = await Request.Fetch<Weather>(uri, new RequestOption(apiName, apiKey));
+                RootWeather weather = await Request.Fetch<RootWeather>(uri, new RequestOption(apiName, apiKey));
                 TodayWeather[] weatherOnWeek = new TodayWeather[7];
                 for(int i = 0; i < weatherOnWeek.Length; i++)
                 {
@@ -62,56 +62,6 @@ namespace TelegramBot.Models.APIs.Weather
                 Console.WriteLine(e.Message);
                 return null;
             }
-        }
-
-        public class Fact
-        {
-            public int temp { get; set; }
-            public string condition { get; set; }
-        }
-
-        public class Night
-        {
-            public int temp_avg { get; set; }
-            public string condition { get; set; }
-        }
-
-        public class Morning
-        {
-            public int temp_avg { get; set; }
-            public string condition { get; set; }
-        }
-
-        public class Day
-        {
-            public int temp_avg { get; set; }
-            public string condition { get; set; }
-        }
-
-        public class Evening
-        {
-            public int temp_avg { get; set; }
-            public string condition { get; set; }
-        }
-
-        public class Parts
-        {
-            public Night night { get; set; }
-            public Morning morning { get; set; }
-            public Day day { get; set; }
-            public Evening evening { get; set; }
-        }
-
-        public class Forecast
-        {
-            public string date { get; set; }
-            public Parts parts { get; set; }
-        }
-
-        public class Weather
-        {
-            public Fact fact { get; set; }
-            public List<Forecast> forecasts { get; set; }
         }
     }
 }

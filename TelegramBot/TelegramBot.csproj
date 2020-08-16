@@ -141,7 +141,15 @@
     <Compile Include="Models\Weather\IWeatherProvider.cs" />
     <Compile Include="Models\Weather\TodayWeather.cs" />
     <Compile Include="Models\Weather\WeatherHandler.cs" />
-    <Compile Include="Models\Weather\YandexWeather.cs" />
+    <Compile Include="Models\Weather\YandexWeather\Models\Day.cs" />
+    <Compile Include="Models\Weather\YandexWeather\Models\Evening.cs" />
+    <Compile Include="Models\Weather\YandexWeather\Models\Fact.cs" />
+    <Compile Include="Models\Weather\YandexWeather\Models\Forecast.cs" />
+    <Compile Include="Models\Weather\YandexWeather\Models\Morning.cs" />
+    <Compile Include="Models\Weather\YandexWeather\Models\Night.cs" />
+    <Compile Include="Models\Weather\YandexWeather\Models\Parts.cs" />
+    <Compile Include="Models\Weather\YandexWeather\Models\RootWeather.cs" />
+    <Compile Include="Models\Weather\YandexWeather\YandexWeather.cs" />
     <Compile Include="Models\AppSettings.cs" />
     <Compile Include="Models\Bot.cs" />
     <Compile Include="Models\Commands\Command.cs" />
